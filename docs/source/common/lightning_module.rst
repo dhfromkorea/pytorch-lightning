@@ -245,7 +245,10 @@ The matching pseudocode is:
     outs = []
     for batch in train_dataloader:
         # forward
-        out = training_step(val_batch)
+        out = training_step(batch)
+        outs.append(out)
+
+        loss = out['loss']
 
         # backward
         loss.backward()
